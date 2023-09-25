@@ -3,6 +3,8 @@
 
 ## 📺 Showcase
 
+[MdMaker_showcase.webm](https://github.com/NStefan002/mdmaker.nvim/assets/100767853/1c2103e3-2b11-4e90-9c18-69884fd5c837)
+
 ## ✨ Features
 * **Generate README.md file** - Run `:MdMake` and it's done
 * **Create urls for plugin repositories and sort them alphabetically**
