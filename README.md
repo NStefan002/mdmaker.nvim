@@ -10,6 +10,34 @@
 * **Create urls for plugin repositories and sort them alphabetically**
 * **Optional** - Include Neovim version manager and GUI of your choice
 
+## 📋 Installation
+
+[lazy](https://github.com/folke/lazy.nvim):
+
+```lua
+{
+    "NStefan002/mdmaker.nvim",
+    cmd = "MdMake",
+    opts = {
+    -- your config
+    }
+}
+```
+
+[packer](https://github.com/wbthomason/packer.nvim):
+
+```lua
+use {
+    "NStefan002/mdmaker.nvim",
+    config = function()
+        require('mdmaker').setup({
+            -- your config
+        })
+    end
+}
+```
+
+
 ## ⚙ Configuration
 
 <details>
@@ -33,6 +61,11 @@
 </details>
 
 ## ⚠️ Warning
-MdMaker goes through your Neovim configuration files and finds the plugins repo names, generates url and creates README.md file.
+MdMaker goes through your Neovim configuration files and finds the plugins repo
+names, generates url and creates README.md file.
+Because it is using lua patterns to match the plugin names, it could (rarely)
+make a mistake (for example if you have a string `"some_non-blank_characters/same_thing"` in your config that is inside of a comment or something similar).
+If that happens consider enabling `enable_url_check` option (I will try to make
+it more efficient and viable, but for now use it only when you really need it).
 This plugin was only tested on Linux systems and it was created for my personal use.
 I shared it so someone can fork it and customize according to their personal needs.
