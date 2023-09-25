@@ -18,6 +18,9 @@ Table of Contents                             *mdmaker.nvim-table-of-contents*
 
 SHOWCASE                                       *mdmaker.nvim-mdmaker-showcase*
 
+MdMaker_showcase.webm
+<https://github.com/NStefan002/mdmaker.nvim/assets/100767853/1c2103e3-2b11-4e90-9c18-69884fd5c837>
+
 
 FEATURES                                       *mdmaker.nvim-mdmaker-features*
 
