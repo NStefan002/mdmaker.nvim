@@ -36,14 +36,18 @@ function M.generate()
         util.error("Could open/find directory.")
         return
     end
-    local repo_pattern = '"[^%s/]+/[^%s/]-"'
+    local repo_pattern1 = '"[^%s/]+/[^%s/]-"'
+    local repo_pattern2 = "'[^%s/]+/[^%s/]-'"
     local links = {}
     for file in files:lines("*l") do
         local reader = io.open(file, "r")
         local repo_name = nil
         local plugin_name = nil
         for line in reader:lines("*l") do
-            repo_name = string.match(line, repo_pattern)
+            repo_name = string.match(line, repo_pattern1)
+            if not repo_name then
+                repo_name = string.match(line, repo_pattern2)
+            end
             if repo_name and #repo_name <= 39 then
                 repo_name = string.sub(repo_name, 2, -2)
                 plugin_name = string.sub(repo_name, string.find(repo_name, "/") + 1)
