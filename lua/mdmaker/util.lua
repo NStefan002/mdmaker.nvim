@@ -13,6 +13,7 @@ function M.info(msg)
     vim.notify("\n" .. msg, vim.log.levels.INFO, { title = "Mdmaker" })
 end
 
+-- TODO: use something like vim.fn.jobstart or vim.system instead
 ---@param url string
 function M.url_is_valid(url)
     local reader = io.popen(
