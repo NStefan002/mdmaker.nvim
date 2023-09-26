@@ -13,17 +13,21 @@ function M.info(msg)
     vim.notify("\n" .. msg, vim.log.levels.INFO, { title = "Mdmaker" })
 end
 
--- TODO: use something like vim.fn.jobstart or vim.system instead
 ---@param url string
 function M.url_is_valid(url)
-    local reader = io.popen(
-        "/usr/bin/curl --head --silent " .. url .. " | /usr/bin/head -n 1 | /usr/bin/grep -o 200",
-        "r"
-    )
-    local status_code = reader:read("*n")
-    -- print(status_code)
-    reader:close()
-    return status_code == 200
+    local obj = vim.system({ "curl", "--head", "--silent", url }, { text = true }):wait()
+    return string.match(obj.stdout, "200") ~= nil
+end
+
+---@param tbl table
+function M.remove_duplicates(tbl)
+    local uniques = {}
+    for _, e in ipairs(tbl) do
+        if e ~= uniques[#uniques] then
+            table.insert(uniques, #uniques + 1, e)
+        end
+    end
+    return uniques
 end
 
 return M

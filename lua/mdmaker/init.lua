@@ -75,7 +75,8 @@ function M.generate()
         .. ")\n## 🔌 Plugins"
         .. "\n"
     table.sort(links)
-    for _, l in pairs(links) do
+    links = util.remove_duplicates(links)
+    for _, l in ipairs(links) do
         output_string = output_string .. l
     end
     if #M.opts.version_manager.name > 0 then
