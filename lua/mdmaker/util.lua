@@ -13,14 +13,11 @@ function M.info(msg)
     vim.notify("\n" .. msg, vim.log.levels.INFO, { title = "Mdmaker" })
 end
 
----@param url string
-function M.url_is_valid(url)
-    local obj = vim.system({ "curl", "--head", "--silent", url }, { text = true }):wait()
-    return string.match(obj.stdout, "200") ~= nil
-end
-
 ---@param tbl table
 function M.remove_duplicates(tbl)
+    table.sort(tbl, function(a, b)
+        return string.lower(a) < string.lower(b)
+    end)
     local uniques = {}
     for _, e in ipairs(tbl) do
         if e ~= uniques[#uniques] then
