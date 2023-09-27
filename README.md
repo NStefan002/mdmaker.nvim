@@ -3,8 +3,9 @@
 
 ## 📺 Showcase
 
+[mdmaker_showcase.webm](https://github.com/NStefan002/mdmaker.nvim/assets/100767853/cb2fe8d8-725b-4ddb-8940-4586bf40f441)
 
-#### Used in showcase:
+#### Used in the showcase:
 * [mdmaker.nvim](https://github.com/NStefan002/mdmaker.nvim)
 * [markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
 * [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
@@ -13,8 +14,8 @@
 
 ## ✨ Features
 * **Generate README.md file** - Run `:MdMake` and it's done
-* **Create urls for plugin repositories and sort them alphabetically**
-* **Optional** - Include Neovim version manager and GUI of your choice
+* **Create URLs for plugin repositories and sort them alphabetically**
+* **Optional** - Include the Neovim version manager and GUI of your choice
 
 ## 📋 Installation
 [lazy](https://github.com/folke/lazy.nvim):
@@ -56,9 +57,9 @@ use {
 {
     nvim_dir = "~/.config/nvim/",
     output = "~/.config/nvim/README.md",
-    enable_url_check = false, -- disable if generating README.md offline or with bad connection
+    enable_url_check = false, -- disable if generating README.md offline or with a bad connection
     package_maganer = "folke/lazy.nvim",
-    -- if you don't want any of the following fields, set them to ""
+    -- If you don't want any of the following fields, set them to ""
     title = "Neovim configuration",
     version_manager = { name = "", url = "" },
     gui = { name = "", url = "" },
@@ -69,16 +70,16 @@ use {
 </details>
 
 ## ⚠️ Warning
-* MdMaker goes through your Neovim configuration files and finds the plugins repo
-names, generates url and creates README.md file.
+* MdMaker goes through your Neovim configuration files and finds the plugin repo
+names, generates URLs, and creates a README.md file.
 Because it is using lua patterns to match the plugin names, it could (rarely)
 make a mistake (for example if you have a string `"some_non-blank_characters/same_thing"`
 in your config that is inside of a comment or something similar).
-If that happens consider enabling `enable_url_check` option. It will take some
-time to finish (1-10 sec on avg. depending on number of plugins, internet speed etc.).
-Note that while it validates urls, It **WILL NOT** block your Neovim instance! It will
-work in the background and it will notify you when your README is generated.
+If that happens consider enabling the `enable_url_check` option. It will take some
+time to finish (1-10 sec on avg. depending on the number of plugins, internet speed, etc.).
+Note that while it validates URLs, It **WILL NOT** block your Neovim instance! It will
+work in the background and notify you when your README is generated.
 * This plugin was only tested on Linux systems.
 * This plugin was created for my personal use (since I'm a lazy bastard).
-I shared it so someone can fork it and customize according to their personal needs if they
+I shared it so someone can fork it and customize it according to their personal needs if they
 don't like my 'style' of writing READMEs (e.g. icon choice, sorting order of plugins, etc.).
