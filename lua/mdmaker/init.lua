@@ -8,7 +8,7 @@ local util = require("mdmaker.util")
 M.default_opts = {
     nvim_dir = "~/.config/nvim/",
     output = "~/.config/nvim/README.md",
-    enable_url_check = false, -- disable if generating README.md offline of with bad connection
+    enable_url_check = false, -- disable if generating README.md offline or with bad connection
     package_maganer = "folke/lazy.nvim",
     -- if you don't want any of the following fields, set them to ""
     title = "Neovim configuration",
@@ -21,9 +21,12 @@ M.opts = {}
 
 function M.setup(opts)
     M.opts = vim.tbl_deep_extend("force", M.default_opts, opts or {})
+    local home_dir = os.getenv("HOME")
     if string.sub(M.opts.nvim_dir, 1, 1) == "~" then
-        local home_dir = os.getenv("HOME")
         M.opts.nvim_dir = home_dir .. string.sub(M.opts.nvim_dir, 2)
+    end
+    if string.sub(M.opts.output, 1, 1) == "~" then
+        M.opts.output = home_dir .. string.sub(M.opts.output, 2)
     end
     api.nvim_create_user_command("MdMake", M.generate, {
         nargs = 0,
@@ -67,7 +70,6 @@ function M.read_files()
     end
     local repo_pattern1 = '"[^%s/]+/[^%s/]-"'
     local repo_pattern2 = "'[^%s/]+/[^%s/]-'"
-    local repos = {}
     for file in files:lines("*l") do
         local reader = io.open(file, "r")
         local repo_name = nil
