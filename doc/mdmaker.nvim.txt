@@ -1,4 +1,4 @@
-*mdmaker.nvim.txt*      For Neovim >= 0.9.1     Last change: 2023 September 26
+*mdmaker.nvim.txt*      For Neovim >= 0.9.1     Last change: 2023 September 27
 
 ==============================================================================
 Table of Contents                             *mdmaker.nvim-table-of-contents*
