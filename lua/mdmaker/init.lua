@@ -70,17 +70,33 @@ function M.read_files()
     end
     local repo_pattern1 = '"[^%s/]+/[^%s/]-"'
     local repo_pattern2 = "'[^%s/]+/[^%s/]-'"
+    local line_comment = "%-%-"
+    local block_comment_start = "%-%-%[%["
+    local block_comment_end = "]]"
+    local inside_block_comment = false
     for file in files:lines("*l") do
         local reader = io.open(file, "r")
-        local repo_name = nil
         for line in reader:lines("*l") do
-            repo_name = string.match(line, repo_pattern1)
-            if not repo_name then
-                repo_name = string.match(line, repo_pattern2)
+            local block_begin, block_end = string.find(line, block_comment_start)
+            if block_end and block_begin and block_end - block_begin == 3 then
+                inside_block_comment = true
             end
-            if repo_name and #repo_name <= 39 then
-                repo_name = string.sub(repo_name, 2, -2)
-                table.insert(M.repo_names, { name = repo_name, valid = true })
+            block_begin, block_end = string.find(line, block_comment_end)
+            if block_end and block_begin and block_end - block_begin == 1 then
+                inside_block_comment = false
+            end
+
+            if not inside_block_comment then
+                local line_comment_begin, _ = string.find(line, line_comment)
+                local repo_name =
+                    string.match(string.sub(line, 1, line_comment_begin), repo_pattern1)
+                if not repo_name then
+                    repo_name = string.match(line, repo_pattern2)
+                end
+                if repo_name and #repo_name <= 39 then
+                    repo_name = string.sub(repo_name, 2, -2)
+                    table.insert(M.repo_names, { name = repo_name, valid = true })
+                end
             end
         end
         reader:close()
