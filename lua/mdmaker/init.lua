@@ -120,18 +120,17 @@ function M.generate_string()
         output_string = output_string .. "# " .. M.opts.title .. "\n"
     end
     output_string = output_string
-        .. "## 📦 Package manager\n* ["
+        .. "## 📦 Package manager\n\n- ["
         .. string.sub(M.opts.package_maganer, string.find(M.opts.package_maganer, "/") + 1)
         .. "](https://github.com/"
         .. M.opts.package_maganer
-        .. ")\n## 🔌 Plugins"
-        .. "\n"
+        .. ")\n\n## 🔌 Plugins\n\n"
     local ul = {}
     for _, rn in ipairs(M.repo_names) do
         if rn.valid then
             local plugin_name = string.sub(rn.name, string.find(rn.name, "/") + 1)
             local url = "https://github.com/" .. rn.name
-            table.insert(ul, "* [" .. plugin_name .. "](" .. url .. ")\n")
+            table.insert(ul, "- [" .. plugin_name .. "](" .. url .. ")\n")
         end
     end
     ul = util.remove_duplicates(ul)
@@ -140,7 +139,7 @@ function M.generate_string()
     end
     if #M.opts.version_manager.name > 0 then
         output_string = output_string
-            .. "## 🗃️ Version manager\n* ["
+            .. "\n## 🗃️ Version manager\n\n- ["
             .. M.opts.version_manager.name
             .. "]("
             .. M.opts.version_manager.url
@@ -148,7 +147,7 @@ function M.generate_string()
     end
     if #M.opts.gui.name > 0 then
         output_string = output_string
-            .. "## ✨ GUI\n* ["
+            .. "\n## ✨ GUI\n\n- ["
             .. M.opts.gui.name
             .. "]("
             .. M.opts.gui.url
