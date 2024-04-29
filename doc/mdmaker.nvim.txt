@@ -1,14 +1,15 @@
-*mdmaker.nvim.txt*       For Neovim >= 0.9.1      Last change: 2023 October 26
+*mdmaker.nvim.txt*        For Neovim >= 0.9.1       Last change: 2024 April 29
 
 ==============================================================================
 Table of Contents                             *mdmaker.nvim-table-of-contents*
 
 1. MdMaker                                              |mdmaker.nvim-mdmaker|
-  - Showcase                                   |mdmaker.nvim-mdmaker-showcase|
-  - Features                                   |mdmaker.nvim-mdmaker-features|
-  - Installation                           |mdmaker.nvim-mdmaker-installation|
-  - Configuration                         |mdmaker.nvim-mdmaker-configuration|
-  - Warning                                     |mdmaker.nvim-mdmaker-warning|
+2. NOTE                                                    |mdmaker.nvim-note|
+  - Showcase                                      |mdmaker.nvim-note-showcase|
+  - Features                                      |mdmaker.nvim-note-features|
+  - Installation                              |mdmaker.nvim-note-installation|
+  - Configuration                            |mdmaker.nvim-note-configuration|
+  - Warning                                        |mdmaker.nvim-note-warning|
 
 ==============================================================================
 1. MdMaker                                              *mdmaker.nvim-mdmaker*
@@ -17,7 +18,16 @@ Table of Contents                             *mdmaker.nvim-table-of-contents*
   README.md generator for your Neovim configuration repo. Created for lazy people
   like me.
 
-SHOWCASE                                       *mdmaker.nvim-mdmaker-showcase*
+==============================================================================
+2. NOTE                                                    *mdmaker.nvim-note*
+
+THIS PLUGIN IS NOW **ARCHIVED**, IF YOU WANT TO ACHIEVE THE SAME RESULT (USING
+LAZY.NVIM), CHECK OUT THIS
+<https://www.reddit.com/r/neovim/comments/1cfyx4p/generate_readme_for_your_nvim_config_repository/>
+POST I WROTE ON REDDIT.
+
+
+SHOWCASE                                          *mdmaker.nvim-note-showcase*
 
 mdmaker_showcase.webm
 <https://github.com/NStefan002/mdmaker.nvim/assets/100767853/cb2fe8d8-725b-4ddb-8940-4586bf40f441>
@@ -33,14 +43,14 @@ USED IN THE SHOWCASE:
 <https://github.com/NStefan002/nvim_config>
 
 
-FEATURES                                       *mdmaker.nvim-mdmaker-features*
+FEATURES                                          *mdmaker.nvim-note-features*
 
 - **Generate README.md file** - Run `:MdMake` and it’s done
 - **Create URLs for plugin repositories and sort them alphabetically**
 - **Optional** - Include the Neovim version manager and GUI of your choice
 
 
-INSTALLATION                               *mdmaker.nvim-mdmaker-installation*
+INSTALLATION                                  *mdmaker.nvim-note-installation*
 
 lazy <https://github.com/folke/lazy.nvim>
 
@@ -57,14 +67,14 @@ lazy <https://github.com/folke/lazy.nvim>
 packer <https://github.com/wbthomason/packer.nvim>
 
 >lua
-    use {
+    use({
         "NStefan002/mdmaker.nvim",
         config = function()
-            require('mdmaker').setup({
+            require("mdmaker").setup({
                 -- your config
             })
-        end
-    }
+        end,
+    })
 <
 
 
@@ -75,7 +85,7 @@ DEPENDENCIES
 - **Neovim version 0.9.1 and above** (might work with earlier versions but it’s not tested)
 
 
-CONFIGURATION                             *mdmaker.nvim-mdmaker-configuration*
+CONFIGURATION                                *mdmaker.nvim-note-configuration*
 
 Full list of options with their default values ~
 
@@ -93,7 +103,7 @@ Full list of options with their default values ~
 <
 
 
-WARNING                                         *mdmaker.nvim-mdmaker-warning*
+WARNING                                            *mdmaker.nvim-note-warning*
 
 - MdMaker goes through your Neovim configuration files and finds the plugin repo
     names, generates URLs, and creates a README.md file.
